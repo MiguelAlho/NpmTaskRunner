@@ -1,7 +1,7 @@
 ﻿using System.Windows.Media;
 using Microsoft.VisualStudio.TaskRunnerExplorer;
 
-namespace NpmTaskRunner.Helpers
+namespace YarnTaskRunner.Helpers
 {
     public class TaskRunnerConfig : TaskRunnerConfigBase
     {

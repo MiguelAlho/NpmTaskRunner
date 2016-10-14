@@ -28,8 +28,8 @@
     <ProjectGuid>{5BB616A3-0392-421C-9D49-683EB5211159}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NpmTaskRunner</RootNamespace>
-    <AssemblyName>NpmTaskRunner</AssemblyName>
+    <RootNamespace>YarnTaskRunner</RootNamespace>
+    <AssemblyName>YarnTaskRunner</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
@@ -274,7 +274,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\npm.png" />
+    <Resource Include="Resources\yarn.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="source.extension.resx">
@@ -283,6 +283,7 @@
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

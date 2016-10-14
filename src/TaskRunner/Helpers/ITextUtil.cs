@@ -1,4 +1,4 @@
-﻿namespace NpmTaskRunner.Helpers
+﻿namespace YarnTaskRunner.Helpers
 {
     public interface ITextUtil
     {

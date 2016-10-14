@@ -3,7 +3,7 @@ using Microsoft.JSON.Editor.Completion;
 using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.Web.Editor.Imaging;
 
-namespace NpmTaskRunner
+namespace YarnTaskRunner
 {
     class SimpleCompletionEntry : JSONCompletionEntry
     {

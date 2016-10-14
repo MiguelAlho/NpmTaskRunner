@@ -2,7 +2,7 @@
 using Microsoft.CSS.Core.Parser;
 using Microsoft.JSON.Core.Parser;
 
-namespace NpmTaskRunner
+namespace YarnTaskRunner
 {
     internal class JSONItemCollector<T> : IJSONSimpleTreeVisitor where T : JSONParseItem
     {

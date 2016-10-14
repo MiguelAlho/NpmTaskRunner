@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TextManager.Interop;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace NpmTaskRunner.Helpers
+namespace YarnTaskRunner.Helpers
 {
     public static class BindingsPersister
     {

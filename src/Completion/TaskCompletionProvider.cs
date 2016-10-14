@@ -10,10 +10,10 @@ using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Utilities;
 
-namespace NpmTaskRunner
+namespace YarnTaskRunner
 {
     [Export(typeof(IJSONCompletionListProvider))]
-    [Name("NpmTaskCompletionProvider")]
+    [Name("YarnTaskCompletionProvider")]
     internal class TaskCompletionProvider : IJSONCompletionListProvider
     {
         [Import]

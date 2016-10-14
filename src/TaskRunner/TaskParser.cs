@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace NpmTaskRunner
+namespace YarnTaskRunner
 {
     class TaskParser
     {
@@ -27,7 +27,7 @@ namespace NpmTaskRunner
                     foreach (var child in children)
                     {
                         if (!list.ContainsKey(child.Name))
-                            list.Add(child.Name, $"npm run {child.Name}");
+                            list.Add(child.Name, $"yarn run {child.Name}");
                     }
                 }
 
@@ -35,7 +35,7 @@ namespace NpmTaskRunner
                 foreach (var reserved in Constants.ALWAYS_TASKS)
                 {
                     if (!list.ContainsKey(reserved))
-                        list.Add(reserved, $"npm {reserved}");
+                        list.Add(reserved, $"yarn {reserved}");
                 }
 
                 AddMissingDefaultParents(list);
@@ -47,7 +47,7 @@ namespace NpmTaskRunner
 
                 // Add "restart" node if RESTART_SCRIPT_TASKS contains anything in list
                 if (hasMatch)
-                    list.Add("restart", "npm restart");
+                    list.Add("restart", "yarn restart");
             }
             catch (Exception ex)
             {
@@ -76,7 +76,7 @@ namespace NpmTaskRunner
 
             foreach (var parent in newParents)
             {
-                string cmd = parent == "version" ? null : $"npm {parent}";
+                string cmd = parent == "version" ? null : $"yarn {parent}";
                 list.Add(parent, cmd);
             }
         }

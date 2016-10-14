@@ -1,6 +1,8 @@
-# NPM Task Runner
+# Yarn Task Runner
 
-[![Build status](https://ci.appveyor.com/api/projects/status/2cohf1g6n0ii7imq?svg=true)](https://ci.appveyor.com/project/madskristensen/npmtaskrunner)
+Mad's NPM Task Runner forked and changed to use Yarn instead.
+
+[![Build status](https://ci.appveyor.com/api/projects/status/2cohf1g6n0ii7imq?svg=true)](https://ci.appveyor.com/project/madskristensen/yarntaskrunner)
 
 Download the extension at the
 [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/8f2f2cbc-4da5-43ba-9de2-c9d08ade4941)
@@ -9,10 +11,39 @@ or get the
 
 ---------------------------------------------------------
 
-Adds support for npm scripts defined in package.json 
+Adds support for yarn scripts defined in package.json 
 directly in Visual Studio's Task Runner Explorer.
 
-## npm scripts
+## Current Known Limitations
+
+- Task Runner Explorer seems to not allow more than one extension to target the same file (in this case the `package.json` file). As such, It won't load if [NPM Task Runner](https://visualstudiogallery.msdn.microsoft.com/8f2f2cbc-4da5-43ba-9de2-c9d08ade4941) is installed
+- There's a limitation in one of Yarn's files (at 0.15.1) - `base-reporter.js` - that attempts to access stdin under IISNODE, which is inexistent. To work around this, you currently need to edit the installed `base-reporter.js` file at `%appData%\npm\node_modules\yarn\lib\reporters\base-reporte.js`. At that file, around line 55 change:
+
+```
+this.stdout = opts.stdout || process.stdout;
+this.stderr = opts.stderr || process.stderr;
+this.stdin = opts.stdin || process.stdin;
+this.emoji = !!opts.emoji;
+```
+
+to
+
+```
+this.stdout = opts.stdout || process.stdout;
+this.stderr = opts.stderr || process.stderr;
+
+//HACK!!!!
+if(process.platform !== 'win32' && !process.env.IISNODE_VERSION)
+    this.stdin = opts.stdin || process.stdin;
+
+this.emoji = !!opts.emoji;
+```
+
+this situation has been reported to the yarn team and is a pull-request on their repo at [https://github.com/yarnpkg/yarn/pull/1000](https://github.com/yarnpkg/yarn/pull/1000) 
+
+
+
+## yarn scripts
 
 Inside package.json it is possible to add custom scripts inside
 the "scripts" element.
@@ -28,13 +59,15 @@ the "scripts" element.
 }
 ```
 
+
+
 ## Task Runner Explorer
 Open Task Runner Explorer by right-clicking the `package.json`
 file and select **Task Runner Explorer** from the context menu:
 
 ![Open Task Runner Explorer](art/open-trx.png)
 
-### Execute scripts
+### Execute scripts (untested)
 When scripts are specified, the Task Runner Explorer
 will show those scripts.
 
@@ -44,7 +77,7 @@ Each script can be executed by double-clicking the task.
 
 ![Console](art/console.png)
 
-### Verbose output
+### Verbose output (untested)
 A button for turning verbose output on and off is located
 at the left toolbar.
 
@@ -53,13 +86,13 @@ at the left toolbar.
 The button is a toggle button that can be left
 on or off for as long as needed.
 
-### Bindings
+### Bindings (untested)
 Script bindings make it possible to associate individual scripts
 with Visual Studio events such as "After build" etc.
 
 ![Visual Studio bindings](art/bindings.png)
 
-## Intellisense
+## Intellisense (untested)
 
 If you manually edit bindings in package.json, then full
 Intellisense is provided.

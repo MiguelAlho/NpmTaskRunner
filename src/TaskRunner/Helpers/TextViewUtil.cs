@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TextManager.Interop;
 
-namespace NpmTaskRunner.Helpers
+namespace YarnTaskRunner.Helpers
 {
     public static class TextViewUtil
     {

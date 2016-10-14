@@ -8,10 +8,10 @@ using Microsoft.VisualStudio.Language.Intellisense;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Utilities;
 
-namespace NpmTaskRunner
+namespace YarnTaskRunner
 {
     [Export(typeof(IJSONCompletionListProvider))]
-    [Name("NpmBindingsCompletionProvider")]
+    [Name("YarnBindingsCompletionProvider")]
     internal class BindingsCompletionProvider : IJSONCompletionListProvider
     {
         private static StandardGlyphGroup _glyph =  StandardGlyphGroup.GlyphArrow;

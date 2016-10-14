@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.VisualStudio.TaskRunnerExplorer;
-using NpmTaskRunner.Helpers;
+using YarnTaskRunner.Helpers;
 
-namespace NpmTaskRunner
+namespace YarnTaskRunner
 {
     [TaskRunnerExport(Constants.FILENAME)]
     class TaskRunnerProvider : ITaskRunner
@@ -18,10 +18,10 @@ namespace NpmTaskRunner
 
         public TaskRunnerProvider()
         {
-            _icon = new BitmapImage(new Uri(@"pack://application:,,,/NpmTaskRunner;component/Resources/npm.png"));
+            _icon = new BitmapImage(new Uri(@"pack://application:,,,/YarnTaskRunner;component/Resources/yarn.png"));
         }
 
-        private void InitializeNpmTaskRunnerOptions()
+        private void InitializeYarnTaskRunnerOptions()
         {
             _options = new List<ITaskRunnerOption>();
             _options.Add(new TaskRunnerOption("Verbose", PackageIds.cmdVerbose, PackageGuids.guidVSPackageCmdSet, false, "-d"));
@@ -33,7 +33,7 @@ namespace NpmTaskRunner
             {
                 if (_options == null)
                 {
-                    InitializeNpmTaskRunnerOptions();
+                    InitializeYarnTaskRunnerOptions();
                 }
 
                 return _options;
@@ -63,7 +63,7 @@ namespace NpmTaskRunner
             var defaults = hierarchy.Where(h => Constants.ALL_DEFAULT_TASKS.Contains(h.Key));
 
             TaskRunnerNode defaultTasks = new TaskRunnerNode("Defaults");
-            defaultTasks.Description = "Default predefined npm commands.";
+            defaultTasks.Description = "Default predefined yarn commands.";
             root.Children.Add(defaultTasks);
             AddCommands(configPath, scripts, defaults, defaultTasks);
 
@@ -72,7 +72,7 @@ namespace NpmTaskRunner
                 var customs = hierarchy.Except(defaults);
 
                 TaskRunnerNode customTasks = new TaskRunnerNode("Custom");
-                customTasks.Description = "Custom npm commands.";
+                customTasks.Description = "Custom yarn commands.";
                 root.Children.Add(customTasks);
 
                 AddCommands(configPath, scripts, customs, customTasks);
@@ -101,9 +101,12 @@ namespace NpmTaskRunner
 
         private static TaskRunnerNode CreateTask(string cwd, string name, string cmd)
         {
+            //for some commands --color=always alters the commands meaninf and does not work . Currently using a white list
+            string color = Constants.COLORED_OUTPUT_TASKS.Contains(name) ? " --color=always" : String.Empty;
+
             return new TaskRunnerNode(name, !string.IsNullOrEmpty(cmd))
             {
-                Command = new TaskRunnerCommand(cwd, "cmd.exe", $"/c {cmd} --color=always"),
+                Command = new TaskRunnerCommand(cwd, "cmd.exe", $"/c {cmd}{color}"),
                 Description = $"Runs the '{name}' command",
             };
         }

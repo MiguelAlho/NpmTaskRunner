@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TaskRunnerExplorer;
 
-namespace NpmTaskRunner.Helpers
+namespace YarnTaskRunner.Helpers
 {
     public class TaskRunnerOption : ITaskRunnerOption
     {
