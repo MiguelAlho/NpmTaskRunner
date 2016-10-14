@@ -2,12 +2,9 @@
 
 Mad's NPM Task Runner forked and changed to use Yarn instead.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/2cohf1g6n0ii7imq?svg=true)](https://ci.appveyor.com/project/madskristensen/yarntaskrunner)
 
 Download the extension at the
-[VS Gallery](https://visualstudiogallery.msdn.microsoft.com/8f2f2cbc-4da5-43ba-9de2-c9d08ade4941)
-or get the
-[nightly build](http://vsixgallery.com/extension/d7f89ba3-815c-4feb-89b9-68d1654e2138/)
+[VS Gallery](https://visualstudiogallery.msdn.microsoft.com/c9f7667c-ac1f-4be8-82c6-9a4e34fef47b)
 
 ---------------------------------------------------------
 
