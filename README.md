@@ -1,4 +1,6 @@
-# Yarn Task Runner
+Mad's original NPM Task Runner now supports Yarn, so choose [NPM Task Runner](https://visualstudiogallery.msdn.microsoft.com/8f2f2cbc-4da5-43ba-9de2-c9d08ade4941) for a better experience
+
+# Yarn Task Runner (Deprecated - Prefer NPM Task Runner)
 
 Mad's NPM Task Runner forked and changed to use Yarn instead.
 
